@@ -62,6 +62,7 @@ namespace HR.LeaveManagement.Api.Controllers
 
         // PUT api/<LeaveRequestsController>/changeapproval/5
         [HttpPut("changeapproval/{id}")]
+        [Authorize(Roles = "Administrator")]
         public async Task<ActionResult> ChangeApproval(int id, [FromBody] ChangeLeaveRequestApprovalDto changeLeaveRequestApproval)
         {
             var command = new UpdateLeaveRequestCommand { Id = id, ChangeLeaveRequestApprovalDto = changeLeaveRequestApproval };
